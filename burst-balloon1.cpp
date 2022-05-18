@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 int dp[301][301];
     int util(vector <int> &nums, int i, int j){
         if(i>j) 
@@ -21,7 +22,7 @@ int dp[301][301];
             
             ans = max(ans, cs);
         }
-		
+        
         return dp[i][j]=ans;
     }
     int maxCoins(vector<int>& nums){
@@ -32,7 +33,15 @@ int dp[301][301];
     }
 int main()
 {
-    vector<int> arr{1,2,3,4};
+    vector<int> arr;
+    int n, x;
+    cin>>n;
+    
+    for(int i = 0 ;i < n ; i ++ )
+    {
+        cin>>x;
+        arr.push_back(x);
+    }
     
     cout<<maxCoins(arr);
     
