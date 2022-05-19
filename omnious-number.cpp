@@ -23,7 +23,7 @@ int solve(vector<int> arr, int start, int end, int times)
          {
              curCount += digitCount[arr[i]];
          }
-         if( curCount > times)
+         if( curCount >= times)
             count++;
      }
      return count;
