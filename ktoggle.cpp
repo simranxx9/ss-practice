@@ -6,9 +6,8 @@ int main()
     int n, m, k;
     cin >> n >> m >> k;
     
-    int mat[n][m];
-    
-    for(int i = 0 ; i < n ; i ++ )
+    vector<vector<int>> mat(n, vector<int>(m));
+    for(int i = 0 ; i < n ; i++ )
     {
         for(int j = 0 ; j < m ; j++ )
         {
@@ -18,17 +17,17 @@ int main()
     
     map<string, int> mp;
     
-    for(int i = 0; i < n ; i ++ )
+    for(int i = 0; i < n ; i++ )
     {
         string temp = "";
-        for(int j =0 ; j < m; j ++ )
+        for(int j =0 ; j < m; j++ )
         {
-            temp += mat[i][j];
+            temp += to_string(mat[i][j]);
         }
         if(mp.find(temp) != mp.end() )
         {
-            // int oldFreq = mp[temp];
-            mp[temp] ++ ;
+            int oldFreq = mp[temp];
+            mp[temp] = oldFreq + 1 ;
         }
         else
             mp[temp] = 1;
@@ -38,11 +37,11 @@ int main()
     for(auto it : mp)
     {
         int num_zeroes = 0;
-        for(int i = 0 ; i < it.first.length() ; i ++ )
+        for(int i = 0 ; i < (int)it.first.length() ; i ++ )
         {
             if(it.first[i] == '0') num_zeroes++;
         }
-        if( num_zeroes <= k and (k - num_zeroes)%2 == 0 )
+        if( num_zeroes <= k && (k - num_zeroes)%2 == 0 )
             ans = max(it.second, ans);
     }
     
